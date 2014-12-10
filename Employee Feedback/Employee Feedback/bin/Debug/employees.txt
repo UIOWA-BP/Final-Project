@@ -1,0 +1,29 @@
+78345	Beth Lingle	Manufacturing
+39026	Mike Bickering	Purchasing
+32970	Larry Sambo	Marketing
+22976	Sherry Kline	Engineering
+98712	Harry Bown	Human Resources
+89133	Sue Choken	Marketing
+88923	Bella Bright	Accounting
+89235	Jim Jones	Purchasing
+88977	John James	Engineering
+82983	Sam Walton	Sales
+11297	Peter Paul	Human Resources
+43442	Mary Paul	Sales
+99876	Paul Stone	Manufacturing
+11234	Blake Jamison	Engineering
+93267	Chance Foster	Manufacturing
+10293	Guanglin Xu	Engineering
+33889	Yu Su	Sales
+71283	Jammie Bolton	Accounting
+61723	Frazer Kane	Engineering
+99335	Ying Yang	Manufacturing
+88888	Becky Shantz	Purchasing
+99999	Jack Evans	Marketing
+22222	Kerri Ellis	Engineering
+11111	Darcy Jackson	Human Resources
+33333	Lance Bowen	Accounting
+44444	Macey Lakeland	Manufacturing
+55555	Jacob Wallnau	Sales
+66666	Jessica Mallow	Engineering
+77777	Randy Caslow	Manufacturing

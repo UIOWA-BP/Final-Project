@@ -1,9 +1,9 @@
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\bin\Debug\Employee Feedback.exe
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\bin\Debug\Employee Feedback.pdb
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\bin\Debug\Employee Feedback.xml
-C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee_Feedback.Form1.resources
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee_Feedback.Resources.resources
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee Feedback.vbproj.GenerateResource.Cache
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee Feedback.exe
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee Feedback.xml
 C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee Feedback.pdb
+C:\Users\rlutter\Desktop\Final-Project\Employee Feedback\Employee Feedback\obj\x86\Debug\Employee_Feedback.employeeFeedback.resources

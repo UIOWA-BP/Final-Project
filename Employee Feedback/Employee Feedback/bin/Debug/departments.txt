@@ -1,0 +1,7 @@
+Accounting	Bella Bright	88923
+Engineering	Guanglin Xu	10293
+Human Resources	Peter Paul	11297
+Manufacturing	Paul Stone	99876
+Marketing	Sue Choken	89133
+Purchasing	Jim Jones	89235
+Sales	Sam Walton	82983
