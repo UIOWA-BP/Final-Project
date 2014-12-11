@@ -296,6 +296,7 @@ Partial Class employeeFeedback
         Me.PerformLayout()
 
     End Sub
+
     Friend WithEvents managerNameLabel As System.Windows.Forms.Label
     Friend WithEvents tb_comments_results As System.Windows.Forms.TextBox
     Friend WithEvents label_comments_results As System.Windows.Forms.Label

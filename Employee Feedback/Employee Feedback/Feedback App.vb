@@ -2,6 +2,7 @@
 
 Public Class employeeFeedback
 
+    ' this is handled when the form loads
     Private Sub employeeFeedback_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         For i = 1 To 10
@@ -28,6 +29,8 @@ Public Class employeeFeedback
         combo_department.Text = File.ReadAllLines("departments.txt")(0).Split(ControlChars.Tab)(0)
         combo_department_results.Text = ""
 
+        ' INSERT READING THE FEEDBACK DOCUMENT HERE 
+
         ' disables employee combo by default
         combo_employee.Enabled = False
 
@@ -36,6 +39,59 @@ Public Class employeeFeedback
         tb_average.Clear()
 
     End Sub
+
+    ' this handles when the submit button is clicked
+    Private Sub SubmitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SubmitButton.Click
+
+        ' declaring variables
+        Dim input_employeeID As Integer
+        Dim input_employeeName As String
+        Dim input_managerName As String
+        Dim input_departmentName As String
+        Dim input_managerScore As Integer
+        Dim input_employeeComment As String
+        Dim output_feedback As feedback
+
+        ' setting employeeID equal to value of the textbox
+        input_employeeID = Convert.ToInt32(Val(tb_employeeID.Text))
+
+    End Sub
+
+    ' this handles when the combobox for department results is changed
+    Private Sub combo_department_results_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles combo_department_results.SelectedIndexChanged
+
+        ' clearing out the feedback results 
+        ' can use String.Empty as well
+        tb_employeescore.Text = ""
+        tb_comment.Text = ""
+        tb_responses.Text = ""
+        tb_comments_results.Text = ""
+
+    End Sub
+
+
+    ' below we can use LINQ or StreamWriter/Reader??
+
+    ' this handles checking the employeeID from employees.txt
+    Function Check_EmployeeID(ByVal empID As Integer) As Integer
+
+    End Function
+
+    ' this handles checking the managers name from departments.txt
+    Function Check_ManagerDept(ByVal managerDept As Integer) As Integer
+
+    End Function
+
+
+    ' this handles checking the employees department from employees.txt
+    Function Check_EmployeeDept(ByRef employeeDept As String) As String
+
+    End Function
+
+
+
+
+
 
 
 
