@@ -87,6 +87,7 @@ Public Class employeeFeedback
     ' below we can use LINQ or StreamWriter/Reader??
 
     ' this handles checking the employeeID from employees.txt
+    ' 
     Function Check_EmployeeID(ByVal empID As Integer) As Integer
 
         Dim check_employeeID_query = From line In File.ReadAllLines("employees.txt")
