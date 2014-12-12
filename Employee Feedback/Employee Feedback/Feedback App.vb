@@ -2,6 +2,13 @@
 
 Public Class employeeFeedback
 
+    Public employInfo
+    Public managerInfo
+    Public comments As List(Of feedback) = New List(Of feedback)
+    Public employeeComments As List(Of feedback) = New List(Of feedback)
+
+    Private list As List(Of feedback)
+    Private feedbackObj As feedback
 
     ' this is handled when the form loads
     Private Sub employeeFeedback_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -33,35 +40,79 @@ Public Class employeeFeedback
         ' disables employee combo by default
         combo_employee.Enabled = False
 
+        ' reading the employee feedback into a query
+        Dim submittedFeedback =
+            From line In File.ReadAllLines("feedback.txt")
+            Let employInfo As String() = line.Split(ControlChars.Tab)
+            Select New feedback With
+                   {
+                       .employID = CInt(employInfo(0)),
+                       .employName = employInfo(1),
+                       .manageName = employInfo(2),
+                       .manageScore = CInt(employInfo(3)),
+                       .employComment = employInfo(4)
+                    }
+
+        ' putting the query into a list
+        comments = submittedFeedback.ToList()
+
         ' clearing out two textboxes
         tb_responses.Clear()
         tb_average.Clear()
 
-        ' we need to read employee feedback
-
-
-
     End Sub
-
-
 
     ' this handles when the combobox for department results is changed
     Private Sub combo_department_results_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles combo_department_results.SelectedIndexChanged
 
         ' clearing out the feedback results 
-        ' can use String.Empty as well
         tb_employeescore.Text = ""
         tb_comment.Text = ""
         tb_responses.Text = ""
         tb_comments_results.Text = ""
 
+        ' variables for handling the feedback for managers
         Dim manager As String
-        Dim score As Integer = 0
-        Dim average As Integer = 0
+        Dim count As Integer = 0
+        Dim totalscore As Integer = 0
 
         manager = Check_Manager(combo_department_results.Text)
         managerNameLabel.Text = manager
 
+        ' finds the correct feedback for the selected manager
+        Dim query_feedback = From feedback In comments
+                     Where feedback.manageName = manager
+                     Select feedback
+
+        employeeComments = query_feedback.ToList
+
+        If query_feedback.Count = 0 Then
+            combo_employee.Enabled = False
+            combo_employee.Text = "Select Employee"
+        Else
+            combo_employee.Enabled = True
+            combo_employee.DataSource =
+            combo_employee.Text = "Select Employee"
+        End If
+
+        ' calculating average of feedback
+        Dim average As Double = 0
+
+        For i As Integer = 0 To query_feedback.Count - 1
+            totalscore += query_feedback(i).manageScore
+            count += 1
+        Next
+
+        If count = 0 Then
+            tb_average.Text = ""
+            combo_employee.Enabled = False
+        Else
+            combo_employee.Enabled = True
+            average = totalscore / count
+            tb_average.Text = average
+            tb_employeescore.Text = average
+            tb_responses.Text = count
+        End If
 
     End Sub
 
@@ -128,7 +179,7 @@ Public Class employeeFeedback
 
     End Function
 
-    
+
 
     'Varify that employee has the correct department 
     Function verifyDept(ByVal empID As String) As String
@@ -173,6 +224,8 @@ Public Class employeeFeedback
         input_departmentName = combo_department.Text
         input_enter_Score = Convert.ToInt32(Val(combo_score.Text))
         input_employeeComment = tb_comment.Text
+        input_managerName = Check_Manager(combo_department.Text)
+        input_employeeName = getName(tb_employeeID.Text)
 
         'Checks to see if all the fields are filled out
         If input_employeeID = 0 Or input_employeeComment = String.Empty Then
@@ -205,13 +258,19 @@ Public Class employeeFeedback
         output = New StreamWriter("feedback.txt", True)
 
         output.Write(tb_employeeID.Text & ControlChars.Tab)
-        output.Write(getName(tb_employeeID.Text) & ControlChars.Tab)
-        output.Write(Check_Manager(combo_department.Text) & ControlChars.Tab)
+        output.Write(input_employeeName & ControlChars.Tab)
+        output.Write(input_managerName & ControlChars.Tab)
         output.Write(input_enter_Score & ControlChars.Tab)
         output.Write(input_employeeComment & ControlChars.CrLf)
         output.Close()
         MsgBox("Thank you for your feedback!")
+
+        feedbackObj = New feedback(input_employeeID, input_employeeName, input_managerName, input_enter_Score, input_employeeComment)
+
+
+
         reset()
+
 
 
 
