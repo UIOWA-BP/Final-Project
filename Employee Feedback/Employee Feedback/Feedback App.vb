@@ -29,7 +29,17 @@ Public Class employeeFeedback
         combo_department.Text = File.ReadAllLines("departments.txt")(0).Split(ControlChars.Tab)(0)
         combo_department_results.Text = ""
 
-        ' INSERT READING THE FEEDBACK DOCUMENT HERE 
+        ' Creating an array for displaying the departments
+        Dim deptName As String()
+
+        For Each line In File.ReadAllLines("departments.txt")
+            deptName = line.Split(ControlChars.Tab)
+            combo_department.Items.Add(deptName(0))
+            combo_department_results.Items.Add(deptName(0))
+        Next
+        ' inserts the text into the combo boxes
+        combo_department.Text = File.ReadAllLines("departments.txt")(0).Split(ControlChars.Tab)(0)
+        combo_department_results.Text = String.Empty
 
         ' disables employee combo by default
         combo_employee.Enabled = False
@@ -37,6 +47,10 @@ Public Class employeeFeedback
         ' clearing out two textboxes
         tb_responses.Clear()
         tb_average.Clear()
+
+        ' we need to read employee feedback
+
+
 
     End Sub
 
@@ -75,19 +89,15 @@ Public Class employeeFeedback
     ' this handles checking the employeeID from employees.txt
     Function Check_EmployeeID(ByVal empID As Integer) As Integer
 
-    End Function
+        Dim check_employeeID_query = From line In File.ReadAllLines("employees.txt")
+                            Let employeeInformation As String() = line.Split(ControlChars.Tab)
+                            Where Convert.ToInt32(employeeInformation(0) = empID)
+                        Select line
 
-    ' this handles checking the managers name from departments.txt
-    Function Check_ManagerDept(ByVal managerDept As Integer) As Integer
+        Return check_employeeID_query.Count
 
-    End Function
-
-
-    ' this handles checking the employees department from employees.txt
-    Function Check_EmployeeDept(ByRef employeeDept As String) As String
 
     End Function
-
 
 
 
